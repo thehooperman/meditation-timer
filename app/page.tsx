@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import Link from "next/link";
+import Slider from "@/components/slider/Slider";
 
 const App: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -75,6 +76,9 @@ const App: React.FC = () => {
 
       <section id="test" className={styles.section}>
         Test things here
+        <Slider />
+        <Slider />
+        <Slider />
       </section>
     </div>
   );
