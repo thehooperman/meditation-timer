@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import Link from "next/link";
 import Slider from "@/components/slider/Slider";
+import Timer from "@/components/timer/Timer";
 
 const App: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -75,10 +76,15 @@ const App: React.FC = () => {
       </section>
 
       <section id="test" className={styles.section}>
-        Test things here
-        <Slider />
-        <Slider />
-        <Slider />
+        <h2>Test things here</h2>
+        <div>
+          <Slider />
+          <Slider />
+          <Slider />
+        </div>
+        <div>
+          <Timer />
+        </div>
       </section>
     </div>
   );
