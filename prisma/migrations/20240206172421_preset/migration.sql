@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Preset" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "time1" INTEGER NOT NULL DEFAULT 0,
+    "time2" INTEGER NOT NULL DEFAULT 0,
+    "time3" INTEGER NOT NULL DEFAULT 0
+);

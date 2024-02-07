@@ -5,8 +5,11 @@ import styles from "./page.module.scss";
 import Link from "next/link";
 import Slider from "@/components/slider/Slider";
 import Timer from "@/components/timer/Timer";
+import Select from "@/components/select/Select";
 
 const App: React.FC = () => {
+  const [data, setData] = useState(null);
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -17,6 +20,11 @@ const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    fetch("/api/preset")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error:", error));
+
     const onScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };
@@ -55,7 +63,15 @@ const App: React.FC = () => {
 
       <section id="start" className={styles.section}>
         <h2>Select Your Meditation</h2>
-        <p>Write something about yourself here.</p>
+        {data ? (
+          <>
+            <div>{JSON.stringify(data)}</div>
+            <Select presets={data} />
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+
         <button
           className={styles.block_link}
           onClick={() => scrollToSection("meditate")}
