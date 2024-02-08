@@ -4,6 +4,7 @@ import Slider from "../slider/Slider";
 const SelectedOptions = ({ preset }) => {
   return (
     <div className={styles.container}>
+      <h3>Adjust the presets if you like</h3>
       <div>{preset.name}</div>
       {/* <div>{JSON.stringify(preset)}</div> */}
       <Slider

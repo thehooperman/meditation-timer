@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PresetContext } from "@/app/page";
 import styles from "./Slider.module.scss";
 
@@ -11,6 +11,10 @@ const Slider = ({
 }) => {
   const presetContext = useContext(PresetContext);
   const [value, setValue] = useState(presetValue);
+
+  useEffect(() => {
+    setValue(presetValue);
+  }, [presetValue]);
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // console.log("handleSliderChange event.target.value", event.target.value);

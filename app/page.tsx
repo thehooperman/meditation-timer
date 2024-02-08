@@ -67,7 +67,8 @@ const reducer = (state, action) => {
 };
 
 const App: React.FC = () => {
-  // const [data, setData] = useState(null);
+  // const [timerData, setTimerData] = useState({});
+  // const [selectedData, setSelectedData] = useState(null);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const scrollToSection = (sectionId: string) => {
@@ -145,17 +146,8 @@ const App: React.FC = () => {
           </section>
 
           <section id="start" className={styles.section}>
-            <h2>Select Your Meditation</h2>
-            {state.data ? (
-              <>
-                <Select presets={state.data} />
-                {state.data.map((preset) => {
-                  return <SelectedOptions key={preset.id} preset={preset} />;
-                })}
-              </>
-            ) : (
-              <p>Loading...</p>
-            )}
+            <h2>Your Meditation</h2>
+            <Select presets={state.data} />
 
             <button
               className={styles.block_link}
@@ -167,7 +159,7 @@ const App: React.FC = () => {
 
           <section id="meditate" className={styles.section}>
             <h2>Your Meditation</h2>
-            <p>Display your projects and their descriptions here.</p>
+            <Timer />
             <button
               className={styles.block_link}
               onClick={() => scrollToSection("home")}
@@ -178,10 +170,7 @@ const App: React.FC = () => {
 
           <section id="test" className={styles.section}>
             <h2>Test things here</h2>
-            <div>
-              {/* <Slider />
-            <Slider />
-            <Slider /> */}
+            {/* <div>
               <label htmlFor="time3">Test</label>
               <input
                 type="range"
@@ -192,7 +181,7 @@ const App: React.FC = () => {
                 // value={state.data[1].time3}
                 onChange={handleChangeTest}
               />
-            </div>
+            </div> */}
             <div>
               <Timer />
             </div>
