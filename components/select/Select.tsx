@@ -2,6 +2,7 @@
 
 import db from "@/utils/db";
 import PresetList from "@/components/preset/PresetList";
+import SelectedOptions from "../selectedOptions/SelectedOptions";
 
 interface PresetProps {
   id: string;
@@ -22,6 +23,9 @@ const Select: React.FC<PresetSelectionProps> = ({ presets }) => {
       <h1>Presets</h1>
       {presets.map((preset) => {
         return <div key={preset.id}>{JSON.stringify(preset)}</div>;
+      })}
+      {presets.map((preset) => {
+        return <SelectedOptions key={preset.id} preset={preset} />;
       })}
     </div>
   );
