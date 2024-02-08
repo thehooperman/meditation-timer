@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./Slider.module.scss";
 
-const Slider = () => {
-  const [value, setValue] = useState(0);
+const Slider = ({ label, max = "0", presetValue = 0 }) => {
+  const [value, setValue] = useState(presetValue);
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(Number(event.target.value));
@@ -11,10 +11,11 @@ const Slider = () => {
   return (
     <>
       <div className={styles.container}>
+        <label htmlFor="myRange">{label}</label>
         <input
           type="range"
-          min="1"
-          max="100"
+          min="0"
+          max={max}
           value={value}
           className={styles.slider}
           id="myRange"
