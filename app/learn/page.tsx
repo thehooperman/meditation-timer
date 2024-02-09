@@ -1,6 +1,8 @@
+import styles from "./page.module.scss";
+
 const Learn = () => {
   return (
-    <>
+    <div className={styles.container}>
       <h1>Learn about Meditation:</h1>
 
       <ol>
@@ -92,7 +94,7 @@ const Learn = () => {
         find a practice that suits you and brings a sense of calm and presence
         to your life.
       </p>
-    </>
+    </div>
   );
 };
 export default Learn;

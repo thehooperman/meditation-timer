@@ -19,8 +19,6 @@ const initialObjectState = {
 };
 
 const objectReducer = (state, action) => {
-  // console.log("objectReducer state", JSON.stringify(state));
-  // console.log("objectReducer action", JSON.stringify(action));
   switch (action.action.type) {
     case "UPDATE_NAME":
       return { ...state, name: action.action.payload };
@@ -97,21 +95,6 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // TODO: Test only, remove later
-  // useEffect(() => {
-  //   console.log("##### state", state);
-  // }, [state]);
-
-  // TODO: Test only, remove later
-  const handleChangeTest = (event) => {
-    console.log("event.target.value", event.target.value);
-    dispatch({
-      type: "UPDATE_ITEM",
-      id: "72dfaca2-2058-4d20-abe5-7b1968d76171",
-      action: { type: "UPDATE_TIME3", payload: event.target.value },
-    });
-  };
-
   if (state.isLoading) {
     return <div>Loading...</div>;
   } else if (state.error) {
@@ -154,36 +137,6 @@ const App: React.FC = () => {
               Cancel Meditation
             </button>
           </section>
-
-          {/* <section id="meditate" className={styles.section}>
-            <h2>Your Meditation</h2>
-            <Timer />
-            <button
-              className={styles.block_link}
-              onClick={() => scrollToSection("home")}
-            >
-              Stop Meditation
-            </button>
-          </section> */}
-
-          {/* <section id="test" className={styles.section}>
-            <h2>Test things here</h2>
-             <div>
-              <label htmlFor="time3">Test</label>
-              <input
-                type="range"
-                id="time3"
-                name="time3"
-                min="0"
-                max="10"
-                // value={state.data[1].time3}
-                onChange={handleChangeTest}
-              />
-            </div> 
-            <div>
-              <Timer />
-            </div>
-          </section> */}
         </>
       </PresetContext.Provider>
     );
