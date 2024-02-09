@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "./Timer.module.scss";
 
-const Timer = ({ time1 = 0.25, time2 = 0.25, time3 = 0.25 }) => {
+const Timer = ({ isStarted, time1 = 0, time2 = 0, time3 = 0 }) => {
+  // const Timer = ({ isStarted, timer1, timer2, timer2 }) => {
   const [timer1, setTimer1] = useState(time1 * 60);
   const [timer2, setTimer2] = useState(time2 * 60);
   const [timer3, setTimer3] = useState(time3 * 60);
@@ -12,7 +13,7 @@ const Timer = ({ time1 = 0.25, time2 = 0.25, time3 = 0.25 }) => {
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
-    if (!isPaused) {
+    if (!isPaused && isStarted) {
       interval = setInterval(() => {
         if (currentTimer === 1) {
           if (timer1 > 0) {
@@ -38,7 +39,7 @@ const Timer = ({ time1 = 0.25, time2 = 0.25, time3 = 0.25 }) => {
     }
 
     return () => clearInterval(interval);
-  }, [currentTimer, timer1, timer2, timer3, isPaused]);
+  }, [currentTimer, timer1, timer2, timer3, isPaused, isStarted]);
 
   const handlePause = () => {
     setIsPaused((prevState) => !prevState);
@@ -59,7 +60,7 @@ const Timer = ({ time1 = 0.25, time2 = 0.25, time3 = 0.25 }) => {
       {currentTimer === 3 && <div>Timer 3: {timer3}</div>}
       {currentTimer === 0 && finished && <div>Finished</div>}
       <button onClick={handlePause}>{isPaused ? "Resume" : "Pause"}</button>
-      <button onClick={handleStop}>Stop</button>
+      {/* <button onClick={handleStop}>Stop</button> */}
     </div>
   );
 };
