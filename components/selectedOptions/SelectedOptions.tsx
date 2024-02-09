@@ -5,9 +5,23 @@ import Timer from "../timer/Timer";
 
 const SelectedOptions = ({ preset }) => {
   const [isStarted, setIsStarted] = useState(false);
+  const [finished, setFinished] = useState(false);
+  const [currentTimer, setCurrentTimer] = useState(1);
+
+  const [timer1, setTimer1] = useState(preset.time1 * 60);
+  const [timer2, setTimer2] = useState(preset.time2 * 60);
+  const [timer3, setTimer3] = useState(preset.time3 * 60);
 
   const handleStarted = () => {
     setIsStarted((prevState) => !prevState);
+  };
+
+  const handleStop = () => {
+    setCurrentTimer(0);
+    setFinished(true);
+    setTimer1(0);
+    setTimer2(0);
+    setTimer3(0);
   };
 
   return (
@@ -15,9 +29,18 @@ const SelectedOptions = ({ preset }) => {
       {isStarted ? (
         <Timer
           isStarted={isStarted}
-          time1={preset.time1}
-          time2={preset.time2}
-          time3={preset.time3}
+          finished={finished}
+          currentTimer={currentTimer}
+          handleStop={handleStop}
+          // time1={preset.time1}
+          // time2={preset.time2}
+          // time3={preset.time3}
+          timer1={timer1}
+          timer2={timer2}
+          timer3={timer3}
+          setTimer1={setTimer1}
+          setTimer2={setTimer2}
+          setTimer3={setTimer3}
         />
       ) : (
         <>

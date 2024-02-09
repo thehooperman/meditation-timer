@@ -1,13 +1,24 @@
 import { useState, useEffect } from "react";
 import styles from "./Timer.module.scss";
 
-const Timer = ({ isStarted, time1 = 0, time2 = 0, time3 = 0 }) => {
-  // const Timer = ({ isStarted, timer1, timer2, timer2 }) => {
-  const [timer1, setTimer1] = useState(time1 * 60);
-  const [timer2, setTimer2] = useState(time2 * 60);
-  const [timer3, setTimer3] = useState(time3 * 60);
-  const [finished, setFinished] = useState(false);
-  const [currentTimer, setCurrentTimer] = useState(1);
+// const Timer = ({ isStarted, time1 = 0, time2 = 0, time3 = 0 }) => {
+const Timer = ({
+  isStarted,
+  finished,
+  currentTimer,
+  handleStop,
+  timer1,
+  timer2,
+  timer3,
+  setTimer1,
+  setTimer2,
+  setTimer3,
+}) => {
+  // const [timer1, setTimer1] = useState(time1 * 60);
+  // const [timer2, setTimer2] = useState(time2 * 60);
+  // const [timer3, setTimer3] = useState(time3 * 60);
+  // const [finished, setFinished] = useState(false);
+  // const [currentTimer, setCurrentTimer] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
@@ -41,17 +52,23 @@ const Timer = ({ isStarted, time1 = 0, time2 = 0, time3 = 0 }) => {
     return () => clearInterval(interval);
   }, [currentTimer, timer1, timer2, timer3, isPaused, isStarted]);
 
+  useEffect(() => {
+    if (!isStarted) {
+      handleStop;
+    }
+  }, [isStarted, handleStop]);
+
   const handlePause = () => {
     setIsPaused((prevState) => !prevState);
   };
 
-  const handleStop = () => {
-    setCurrentTimer(0);
-    setFinished(true);
-    setTimer1(0);
-    setTimer2(0);
-    setTimer3(0);
-  };
+  // const handleStop = () => {
+  //   setCurrentTimer(0);
+  //   setFinished(true);
+  //   setTimer1(0);
+  //   setTimer2(0);
+  //   setTimer3(0);
+  // };
 
   return (
     <div>

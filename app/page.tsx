@@ -123,11 +123,9 @@ const App: React.FC = () => {
           <nav className={`${styles.nav} ${isScrolled ? styles.show : ""}`}>
             <ul>
               <li onClick={() => scrollToSection("home")}>Home</li>
-              <li onClick={() => scrollToSection("start")}>
-                Select Meditating
-              </li>
-              <li onClick={() => scrollToSection("meditate")}> Meditation</li>
-              <li onClick={() => scrollToSection("test")}> Test</li>
+              <li onClick={() => scrollToSection("start")}>Start Meditating</li>
+              {/* <li onClick={() => scrollToSection("meditate")}> Meditation</li>
+              <li onClick={() => scrollToSection("test")}> Test</li> */}
             </ul>
           </nav>
 
@@ -151,13 +149,13 @@ const App: React.FC = () => {
 
             <button
               className={styles.block_link}
-              onClick={() => scrollToSection("meditate")}
+              onClick={() => scrollToSection("home")}
             >
-              Begin Meditation
+              Cancel Meditation
             </button>
           </section>
 
-          <section id="meditate" className={styles.section}>
+          {/* <section id="meditate" className={styles.section}>
             <h2>Your Meditation</h2>
             <Timer />
             <button
@@ -166,11 +164,11 @@ const App: React.FC = () => {
             >
               Stop Meditation
             </button>
-          </section>
+          </section> */}
 
-          <section id="test" className={styles.section}>
+          {/* <section id="test" className={styles.section}>
             <h2>Test things here</h2>
-            {/* <div>
+             <div>
               <label htmlFor="time3">Test</label>
               <input
                 type="range"
@@ -181,11 +179,11 @@ const App: React.FC = () => {
                 // value={state.data[1].time3}
                 onChange={handleChangeTest}
               />
-            </div> */}
+            </div> 
             <div>
               <Timer />
             </div>
-          </section>
+          </section> */}
         </>
       </PresetContext.Provider>
     );
