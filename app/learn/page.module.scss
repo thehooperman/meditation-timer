@@ -1,5 +1,10 @@
 .container {
-  padding: 2rem;
+  padding: 4rem 2rem 3rem;
+
+  .heading {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
 
   ol {
     display: flex;
