@@ -1,5 +1,6 @@
 import NavStatic from "@/components/nav/NavStatic";
 import styles from "./page.module.scss";
+import Footer from "@/components/footer/Footer";
 
 const Learn = () => {
   return (
@@ -98,6 +99,7 @@ const Learn = () => {
           presence to your life.
         </p>
       </div>
+      <Footer />
     </>
   );
 };

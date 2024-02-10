@@ -1,0 +1,33 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease-in-out;
+  &.show {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    li {
+      margin: 0 15px;
+      cursor: pointer;
+      color: white;
+    }
+    .clickable {
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+  }
+}

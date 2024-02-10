@@ -1,43 +1,11 @@
 .section {
-  height: 100vh; /* 100% of the viewport height */
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  gap: 24px;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  padding: 10px;
-  z-index: 1000;
-  // transition: all 0.5s;
-  // display: none;
-  opacity: 0;
-  transform: translateY(-100%);
-  transition: opacity 0.3s ease-in-out;
-  &.show {
-    // display: block;
-    transform: translateY(0%);
-    opacity: 1;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    li {
-      margin: 0 15px;
-      cursor: pointer;
-      color: white;
-    }
-  }
 }
 
 .block_link {
@@ -45,7 +13,7 @@
   display: block;
   font-size: 1rem;
   padding: 10px;
-  margin: 10px;
+  // margin: 10px;
   border: 1px solid #666;
   text-decoration: none;
   color: #666;
@@ -55,9 +23,3 @@
     color: white;
   }
 }
-
-// h1,
-// h2,
-// p {
-//   margin: 0;
-// }

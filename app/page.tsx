@@ -7,6 +7,8 @@ import Slider from "@/components/slider/Slider";
 import Timer from "@/components/timer/Timer";
 import Select from "@/components/select/Select";
 import SelectedOptions from "@/components/selectedOptions/SelectedOptions";
+import Nav from "@/components/nav/Nav";
+import Footer from "@/components/footer/Footer";
 
 export const PresetContext = createContext({} as any);
 
@@ -103,31 +105,24 @@ const App: React.FC = () => {
     return (
       <PresetContext.Provider value={{ presetDispatch: dispatch }}>
         <>
-          <nav className={`${styles.nav} ${isScrolled ? styles.show : ""}`}>
-            <ul>
-              <li onClick={() => scrollToSection("home")}>Home</li>
-              <li onClick={() => scrollToSection("start")}>Start Meditating</li>
-              {/* <li onClick={() => scrollToSection("meditate")}> Meditation</li>
-              <li onClick={() => scrollToSection("test")}> Test</li> */}
-            </ul>
-          </nav>
+          <Nav isScrolled={isScrolled} scrollToSection={scrollToSection} />
 
           <section id="home" className={styles.section}>
             <h1>Welcome to UMOYA</h1>
 
             <Link className={styles.block_link} href="/learn">
-              Learn about Meditation
+              Learn to Meditation
             </Link>
             <button
               className={styles.block_link}
               onClick={() => scrollToSection("start")}
             >
-              Start Meditation
+              Meditate
             </button>
           </section>
 
           <section id="start" className={styles.section}>
-            <h2>Your Meditation</h2>
+            <h2>Meditate</h2>
             <Select presets={state.data} />
 
             <button
@@ -137,6 +132,7 @@ const App: React.FC = () => {
               Cancel Meditation
             </button>
           </section>
+          <Footer isSection={true} />
         </>
       </PresetContext.Provider>
     );
