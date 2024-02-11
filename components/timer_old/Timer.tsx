@@ -62,22 +62,15 @@ const Timer = ({
     setIsPaused((prevState) => !prevState);
   };
 
-  // const handleStop = () => {
-  //   setCurrentTimer(0);
-  //   setFinished(true);
-  //   setTimer1(0);
-  //   setTimer2(0);
-  //   setTimer3(0);
-  // };
-
   return (
     <div>
       {currentTimer === 1 && <div>Timer 1: {timer1}</div>}
       {currentTimer === 2 && <div>Timer 2: {timer2}</div>}
       {currentTimer === 3 && <div>Timer 3: {timer3}</div>}
       {currentTimer === 0 && finished && <div>Finished</div>}
-      <button onClick={handlePause}>{isPaused ? "Resume" : "Pause"}</button>
-      {/* <button onClick={handleStop}>Stop</button> */}
+      <button className={styles.block_link} onClick={handlePause}>
+        {isPaused ? "Resume" : "Pause"}
+      </button>
     </div>
   );
 };

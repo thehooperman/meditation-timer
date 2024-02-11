@@ -1,14 +1,4 @@
-@import "./variables.scss";
-
-.section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+@import "../../app/variables.scss";
 
 .block_link {
   background: none;
@@ -19,9 +9,20 @@
   text-decoration: none;
   color: $primary;
   transition: all 0.3s;
+  width: 100%;
+  max-width: 143px;
+  margin: 0 auto;
   &:hover {
     background-color: $primary-hover;
     border: 1px solid $primary-hover;
     color: $foreground;
+  }
+}
+
+.time_display {
+  font-size: 4rem;
+  &_label {
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 }

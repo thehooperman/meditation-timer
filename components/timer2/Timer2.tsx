@@ -7,6 +7,7 @@ import {
   SetStateAction,
 } from "react";
 import { PresetContext } from "@/app/page";
+import styles from "./Timer2.module.scss";
 
 type Timer2Props = {
   presetId: string;
@@ -28,9 +29,6 @@ const Timer2: FC<Timer2Props> = ({
   handleStop,
 }) => {
   const { presetState, presetDispatch } = useContext(PresetContext);
-  // const [presetData, setPresetData] = useState(presetState?.data || []);
-
-  // const [timer1, setTimer1] = useState(preset.time1 * 60);
   const [timer1, setTimer1] = useState(
     presetState.data.find((item) => item.id === presetId).time1 * 60
   );
@@ -42,7 +40,6 @@ const Timer2: FC<Timer2Props> = ({
   );
 
   const [isPaused, setIsPaused] = useState(false);
-  // const [currentTimer, setCurrentTimer] = useState(1);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -85,24 +82,30 @@ const Timer2: FC<Timer2Props> = ({
     setIsPaused((prevState) => !prevState);
   };
 
-  // useEffect(() => {
-  //   const preset = state?.data.find((item) => item.id === presetId);
-  //   setPresetData(preset);
-  // }, [presetId, state?.data]);
-
   return (
     <div>
-      <h2>Timer2</h2>
-      {/* <div>{presetId}</div> */}
-      {/* <pre>{JSON.stringify(presetState, null, 2)}</pre> */}
-      {/* <div>{timer1}</div>
-      <div>{timer2}</div>
-      <div>{timer3}</div> */}
-      {currentTimer === 1 && <div>Timer 1: {timer1}</div>}
-      {currentTimer === 2 && <div>Timer 2: {timer2}</div>}
-      {currentTimer === 3 && <div>Timer 3: {timer3}</div>}
-      {currentTimer === 0 && finished && <div>Finished</div>}
-      <button onClick={handlePause}>{isPaused ? "Resume" : "Pause"}</button>
+      {currentTimer === 1 && (
+        <div className={styles.time_display_label}>
+          {" "}
+          Prep: <span className={styles.time_display}>{timer1}</span>
+        </div>
+      )}
+      {currentTimer === 2 && (
+        <div className={styles.time_display_label}>
+          Meditate: <span className={styles.time_display}>{timer2}</span>
+        </div>
+      )}
+      {currentTimer === 3 && (
+        <div className={styles.time_display_label}>
+          Rest: <span className={styles.time_display}>{timer3}</span>
+        </div>
+      )}
+      {currentTimer === 0 && finished && (
+        <div className={styles.time_display_label}>Finished</div>
+      )}
+      <button className={styles.block_link} onClick={handlePause}>
+        {isPaused ? "Resume" : "Pause"}
+      </button>
     </div>
   );
 };

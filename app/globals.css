@@ -5,9 +5,14 @@
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-  --foreground-rgb: 0, 0, 0;
+  /* --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255; */
+
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 32, 32, 32;
+  /* --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0; */
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -43,8 +48,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-rgb: 32, 32, 32;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
     --secondary-glow: linear-gradient(
@@ -84,26 +88,13 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  // overflow: hidden; // Uncomment this line to disable scrolling
+  /* // overflow: hidden; */
 }
 
 body {
+  background: rgb(var(--background-rgb));
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
-
-// h1 {
-//   margin-bottom: 12px;
-// }
-// h2 {
-// }
-// h3 {
-// }
 
 a {
   color: inherit;

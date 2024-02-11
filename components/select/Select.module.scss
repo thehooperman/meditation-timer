@@ -1,13 +1,15 @@
+@import "../../app/variables.scss";
+
 .select_block {
-  background-color: black;
+  background-color: $background;
   font-size: 1rem;
   padding: 10px;
-  border: 1px solid #666;
+  border: 1px solid $primary;
   text-decoration: none;
-  color: #666;
+  color: $primary;
   transition: all 0.3s;
   &:hover {
-    background-color: #666;
+    background-color: $primary-hover;
     color: white;
   }
 }

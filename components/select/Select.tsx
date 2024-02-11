@@ -26,17 +26,18 @@ const Select: React.FC<PresetSelectionProps> = ({ presets }) => {
   //   a.name.localeCompare(b.name)
   // );
 
-  const handleSelectChange = (event) => {
+  const handleSelectChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedId = event.target.value;
-    const selected = presets.find((preset) => preset.id === selectedId);
+    const selected: PresetProps | undefined = presets.find(
+      (preset) => preset.id === selectedId
+    );
     setSelectedData(selected);
   };
 
   return (
     <div>
-      {/* <h1>Presets</h1> */}
       <select className={styles.select_block} onChange={handleSelectChange}>
-        <option value="">Select Your Meditation</option>
+        <option value="">Select Meditation</option>
         {presets.map((preset) => (
           <option key={preset.id} value={preset.id}>
             {preset.name}
@@ -44,12 +45,6 @@ const Select: React.FC<PresetSelectionProps> = ({ presets }) => {
         ))}
       </select>
       {selectedData && <SelectedOptions preset={selectedData} />}
-
-      {/* <hr />
-
-      {presets.map((preset) => {
-        return <div key={preset.id}>{JSON.stringify(preset)}</div>;
-      })} */}
     </div>
   );
 };

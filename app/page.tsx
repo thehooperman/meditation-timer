@@ -3,14 +3,11 @@
 import { createContext, useEffect, useState, useReducer } from "react";
 import styles from "./page.module.scss";
 import Link from "next/link";
-import Slider from "@/components/slider/Slider";
-import Timer from "@/components/timer/Timer";
 import Select from "@/components/select/Select";
-import SelectedOptions from "@/components/selectedOptions/SelectedOptions";
 import Nav from "@/components/nav/Nav";
 import Footer from "@/components/footer/Footer";
 
-export const PresetContext = createContext({} as any);
+export const PresetContext = createContext({});
 
 const initialObjectState = {
   id: "",
@@ -67,8 +64,6 @@ const reducer = (state, action) => {
 };
 
 const App: React.FC = () => {
-  // const [timerData, setTimerData] = useState({});
-  // const [selectedData, setSelectedData] = useState(null);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const scrollToSection = (sectionId: string) => {
@@ -131,12 +126,12 @@ const App: React.FC = () => {
             <h2>Meditate</h2>
             <Select presets={state.data} />
 
-            <button
+            {/* <button
               className={styles.block_link}
               onClick={() => scrollToSection("home")}
             >
               Cancel Meditation
-            </button>
+            </button> */}
           </section>
           <Footer isSection={true} />
         </>

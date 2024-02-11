@@ -1,14 +1,4 @@
-@import "./variables.scss";
-
-.section {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+@import "../../app/variables.scss";
 
 .block_link {
   background: none;

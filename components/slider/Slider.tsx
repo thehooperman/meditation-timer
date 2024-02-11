@@ -17,9 +17,6 @@ const Slider = ({
   }, [presetValue]);
 
   const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // console.log("handleSliderChange event.target.value", event.target.value);
-    // console.log("handleSliderChange presetId", presetId);
-    // console.log("handleSliderChange presetType", presetType);
     setValue(Number(event.target.value));
     presetContext.presetDispatch({
       type: "UPDATE_ITEM",
@@ -31,18 +28,20 @@ const Slider = ({
   return (
     <>
       <div className={styles.container}>
-        <label htmlFor={`${presetId}-${presetType}`}>{label}</label>
-        <input
-          type="range"
-          min="0"
-          max={max}
-          value={value}
-          className={styles.slider}
-          id={`${presetId}-${presetType}`}
-          onChange={handleSliderChange}
-        />
-        <p>
-          Value: <span id="demo">{value}</span>
+        <div className={styles.input_group}>
+          <label htmlFor={`${presetId}-${presetType}`}>{label}</label>
+          <input
+            type="range"
+            min="0"
+            max={max}
+            value={value}
+            className={styles.slider}
+            id={`${presetId}-${presetType}`}
+            onChange={handleSliderChange}
+          />
+        </div>
+        <p className={styles.value}>
+          {value} {value === "1" ? "minute" : "minutes"}
         </p>
       </div>
     </>

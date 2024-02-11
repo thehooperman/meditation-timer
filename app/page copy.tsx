@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import Link from "next/link";
 import Slider from "@/components/slider/Slider";
-import Timer from "@/components/timer/Timer";
 import Select from "@/components/select/Select";
 
 const App: React.FC = () => {
@@ -89,18 +88,6 @@ const App: React.FC = () => {
         >
           Stop Meditation
         </button>
-      </section>
-
-      <section id="test" className={styles.section}>
-        <h2>Test things here</h2>
-        <div>
-          <Slider />
-          <Slider />
-          <Slider />
-        </div>
-        <div>
-          <Timer />
-        </div>
       </section>
     </div>
   );
