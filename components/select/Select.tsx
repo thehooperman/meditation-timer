@@ -1,5 +1,7 @@
 "use client";
 
+import styles from "./Select.module.scss";
+
 import db from "@/utils/db";
 import PresetList from "@/components/preset/PresetList";
 import SelectedOptions from "../selectedOptions/SelectedOptions";
@@ -33,7 +35,7 @@ const Select: React.FC<PresetSelectionProps> = ({ presets }) => {
   return (
     <div>
       {/* <h1>Presets</h1> */}
-      <select onChange={handleSelectChange}>
+      <select className={styles.select_block} onChange={handleSelectChange}>
         <option value="">Select Your Meditation</option>
         {presets.map((preset) => (
           <option key={preset.id} value={preset.id}>

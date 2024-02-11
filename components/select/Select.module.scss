@@ -1,0 +1,13 @@
+.select_block {
+  background-color: black;
+  font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #666;
+  text-decoration: none;
+  color: #666;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #666;
+    color: white;
+  }
+}
