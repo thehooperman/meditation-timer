@@ -97,13 +97,19 @@ const App: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    console.table(state.data);
+  }, [state]);
+
   if (state.isLoading) {
     return <div>Loading...</div>;
   } else if (state.error) {
     return <div>Error: {state.error.message}</div>;
   } else {
     return (
-      <PresetContext.Provider value={{ presetDispatch: dispatch }}>
+      <PresetContext.Provider
+        value={{ presetState: state, presetDispatch: dispatch }}
+      >
         <>
           <Nav isScrolled={isScrolled} scrollToSection={scrollToSection} />
 

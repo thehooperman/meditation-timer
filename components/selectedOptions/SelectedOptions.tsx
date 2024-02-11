@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./SelectedOptions.module.scss";
 import Slider from "../slider/Slider";
 import Timer from "../timer/Timer";
+import Timer2 from "../timer2/Timer2";
 
 const SelectedOptions = ({ preset }) => {
   const [isStarted, setIsStarted] = useState(false);
@@ -27,21 +28,32 @@ const SelectedOptions = ({ preset }) => {
   return (
     <div className={styles.container}>
       {isStarted ? (
-        <Timer
-          isStarted={isStarted}
-          finished={finished}
-          currentTimer={currentTimer}
-          handleStop={handleStop}
-          // time1={preset.time1}
-          // time2={preset.time2}
-          // time3={preset.time3}
-          timer1={timer1}
-          timer2={timer2}
-          timer3={timer3}
-          setTimer1={setTimer1}
-          setTimer2={setTimer2}
-          setTimer3={setTimer3}
-        />
+        <>
+          {/* <Timer
+            isStarted={isStarted}
+            finished={finished}
+            currentTimer={currentTimer}
+            handleStop={handleStop}
+            // time1={preset.time1}
+            // time2={preset.time2}
+            // time3={preset.time3}
+            timer1={timer1}
+            timer2={timer2}
+            timer3={timer3}
+            setTimer1={setTimer1}
+            setTimer2={setTimer2}
+            setTimer3={setTimer3}
+          /> */}
+          <Timer2
+            presetId={preset.id}
+            isStarted={isStarted}
+            finished={finished}
+            setFinished={setFinished}
+            currentTimer={currentTimer}
+            setCurrentTimer={setCurrentTimer}
+            handleStop={handleStop}
+          />
+        </>
       ) : (
         <>
           <h3>Adjust the presets if you like</h3>

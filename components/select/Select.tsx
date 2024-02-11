@@ -45,11 +45,11 @@ const Select: React.FC<PresetSelectionProps> = ({ presets }) => {
       </select>
       {selectedData && <SelectedOptions preset={selectedData} />}
 
-      <hr />
+      {/* <hr />
 
       {presets.map((preset) => {
         return <div key={preset.id}>{JSON.stringify(preset)}</div>;
-      })}
+      })} */}
     </div>
   );
 };
