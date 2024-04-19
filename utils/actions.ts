@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import db from "./db";
 
-interface FormData {
+export interface FormData {
   name: string;
   time1: string;
   time2: string;

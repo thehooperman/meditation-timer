@@ -8,6 +8,7 @@ import {
 } from "react";
 import { PresetContext } from "@/app/page";
 import styles from "./Timer2.module.scss";
+import RingTimer from "../ringtimer/RingTimer";
 
 type Timer2Props = {
   presetId: string;
@@ -29,15 +30,15 @@ const Timer2: FC<Timer2Props> = ({
   handleStop,
 }) => {
   const { presetState, presetDispatch } = useContext(PresetContext);
-  const [timer1, setTimer1] = useState(
-    presetState.data.find((item) => item.id === presetId).time1 * 60
-  );
-  const [timer2, setTimer2] = useState(
-    presetState.data.find((item) => item.id === presetId).time2 * 60
-  );
-  const [timer3, setTimer3] = useState(
-    presetState.data.find((item) => item.id === presetId).time3 * 60
-  );
+  const startTime1 =
+    presetState.data.find((item) => item.id === presetId).time1 * 60;
+  const [timer1, setTimer1] = useState(startTime1);
+  const startTime2 =
+    presetState.data.find((item) => item.id === presetId).time2 * 60;
+  const [timer2, setTimer2] = useState(startTime2);
+  const startTime3 =
+    presetState.data.find((item) => item.id === presetId).time3 * 60;
+  const [timer3, setTimer3] = useState(startTime3);
 
   const [isPaused, setIsPaused] = useState(false);
 
@@ -84,21 +85,23 @@ const Timer2: FC<Timer2Props> = ({
 
   return (
     <div>
-      {currentTimer === 1 && (
-        <div className={styles.time_display_label}>
-          {" "}
-          Prep: <span className={styles.time_display}>{timer1}</span>
-        </div>
+      {currentTimer === 1 && startTime1 != 0 && (
+        <>
+          <div className={styles.time_display_label}>Get Ready</div>
+          <RingTimer startTime={startTime1} currentTime={timer1} />
+        </>
       )}
-      {currentTimer === 2 && (
-        <div className={styles.time_display_label}>
-          Meditate: <span className={styles.time_display}>{timer2}</span>
-        </div>
+      {currentTimer === 2 && startTime2 != 0 && (
+        <>
+          <div className={styles.time_display_label}>Meditate</div>
+          <RingTimer startTime={startTime2} currentTime={timer2} />
+        </>
       )}
-      {currentTimer === 3 && (
-        <div className={styles.time_display_label}>
-          Rest: <span className={styles.time_display}>{timer3}</span>
-        </div>
+      {currentTimer === 3 && startTime3 != 0 && (
+        <>
+          <div className={styles.time_display_label}>Rest</div>
+          <RingTimer startTime={startTime3} currentTime={timer3} />
+        </>
       )}
       {currentTimer === 0 && finished && (
         <div className={styles.time_display_label}>Finished</div>

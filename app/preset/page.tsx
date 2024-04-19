@@ -1,7 +1,9 @@
-import NewPresetForm from "@/components/preset/NewPresetForm";
+import NavStatic from "@/components/nav/NavStatic";
+import PresetForm from "@/components/preset/PresetForm";
 import PresetList from "@/components/preset/PresetList";
 import db from "@/utils/db";
 import { resolve } from "path";
+import styles from "./preset.module.scss";
 
 const getData = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -14,14 +16,17 @@ const getData = async () => {
   return presets;
 };
 
-const Setting = async () => {
+const Presets = async () => {
   const presets = await getData();
   return (
-    <div>
-      <h1>Presets</h1>
-      <PresetList presets={presets} />
-      <NewPresetForm />
-    </div>
+    <>
+      <NavStatic />
+      <div className={styles.container}>
+        <h1>Presets</h1>
+        <PresetList presets={presets} />
+        <PresetForm />
+      </div>
+    </>
   );
 };
-export default Setting;
+export default Presets;

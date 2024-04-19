@@ -9,6 +9,24 @@ import Footer from "@/components/footer/Footer";
 
 export const PresetContext = createContext({});
 
+interface ObjectState {
+  name?: string;
+  time1?: number;
+  time2?: number;
+  time3?: number;
+}
+
+interface ItemAction {
+  type: string;
+  payload: any;
+}
+
+interface ObjectAction {
+  // type: string;
+  // payload: any;
+  action: ItemAction;
+}
+
 const initialObjectState = {
   id: "",
   name: "",
@@ -17,7 +35,7 @@ const initialObjectState = {
   time3: "",
 };
 
-const objectReducer = (state, action) => {
+const objectReducer = (state: ObjectState, action: ObjectAction) => {
   switch (action.action.type) {
     case "UPDATE_NAME":
       return { ...state, name: action.action.payload };
@@ -109,7 +127,7 @@ const App: React.FC = () => {
           <Nav isScrolled={isScrolled} scrollToSection={scrollToSection} />
 
           <section id="home" className={styles.section}>
-            <h1>Welcome to UMOYA</h1>
+            <h1 className={styles.heading}>Welcome to the Meditation Timer</h1>
 
             <Link className={styles.block_link} href="/learn">
               Learn to Meditation
@@ -120,18 +138,14 @@ const App: React.FC = () => {
             >
               Meditate
             </button>
+            <Link className={styles.block_link} href="/preset">
+              Manage Presets
+            </Link>
           </section>
 
           <section id="start" className={styles.section}>
-            <h2>Meditate</h2>
+            <h2>Select Meditation</h2>
             <Select presets={state.data} />
-
-            {/* <button
-              className={styles.block_link}
-              onClick={() => scrollToSection("home")}
-            >
-              Cancel Meditation
-            </button> */}
           </section>
           <Footer isSection={true} />
         </>
